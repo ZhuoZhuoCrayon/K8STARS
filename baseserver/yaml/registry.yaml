@@ -5,8 +5,8 @@ metadata:
 data:
   DB_HOST: "tars-db.tars-system.svc.cluster.local"
   DB_PORT: "3306"
-  DB_USER: root
-  DB_PASS: pass
+  DB_USER: "root"
+  DB_PASS: "pass"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -84,8 +84,11 @@ kind: Service
 metadata:
   name: tars-registry
 spec:
+  type: NodePort
   selector:
     app: tars-registry
   ports:
     - protocol: TCP
       port: 17890
+      targetPort: 17890
+      nodePort: 30890

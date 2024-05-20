@@ -13,10 +13,10 @@ kubectl exec ${pod} -- mysql -h ${host} -u${user} -p${pass} -e "create database 
 kubectl exec ${pod} -- mysql -h ${host} -u${user} -p${pass} -e "create database tars_stat"
 kubectl exec ${pod} -- mysql -h ${host} -u${user} -p${pass} -e "create database tars_property"
 
-kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_tars < ./deploy/deploy/framework/sql/db_tars.sql
-kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_user_system < ./deploy/deploy/web/demo/sql/db_user_system.sql
-kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_tars_web < ./deploy/deploy/web/sql/db_tars_web.sql
-kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_cache_web < ./deploy/deploy/web/sql/db_cache_web.sql
-kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} tars_stat < ./deploy/deploy/web/sql/db_cache_web.sql
+kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_tars < ./deploy/framework/sql/db_tars.sql
+kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_user_system < ./deploy/web/demo/sql/db_user_system.sql
+kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_tars_web < ./deploy/web/sql/db_tars_web.sql
+kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} db_cache_web < ./deploy/web/sql/db_cache_web.sql
+kubectl exec -i ${pod} -- mysql -h ${host} -u${user} -p${pass} tars_stat < ./deploy/web/sql/db_cache_web.sql
 
 kubectl exec ${pod} -- mysql -h ${host} -u${user} -p${pass} db_tars -e "show tables"
