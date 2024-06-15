@@ -15,6 +15,8 @@ spec:
       containers:
       - name: tarsproperty
         image: ccr.ccs.tencentyun.com/tarsbase/tarsproperty:v1.1.3
+        ports:
+          - containerPort: 13000
         env:
         - name: DB_HOST
           valueFrom:
@@ -49,3 +51,17 @@ spec:
             exec:
               command: ["tarscli", "prestop"]
       terminationGracePeriodSeconds: 90
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tars-property
+spec:
+  type: NodePort
+  selector:
+    app: tarsproperty
+  ports:
+    - protocol: TCP
+      port: 13000
+      targetPort: 13000
+      nodePort: 30891
